@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <script src="file:///android_asset/js/config.js"></script>
+    <link rel="stylesheet" href="file:///android_asset/static/jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="file:///android_asset/static/jquery-1.8.3/jquery.min.js"></script>
+    <script src="file:///android_asset/js/common.js"></script>
+    <script src="file:///android_asset/static/jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <link rel="stylesheet" href="file:///android_asset/css/style.css">
+</head>
+<body>
+<div data-role="page" id="forgetPwd2">
+    <script src="file:///android_asset/static/jquery-validate-1.7/jquery.validate.min.js"></script>
+    <script src="file:///android_asset/static/jquery-1.8.3/jquery.cookie.js"></script>
+    <script src="file:///android_asset/js/forgetPwd.js"></script>
+    <div data-role="header" data-theme="b">
+        <h1>安全验证</h1>
+        <a href="#" data-ajax="false" onclick="$.mobile.changePage('forgetPwd1.html',{transition: 'flip'});" data-role="button" class="ui-btn-right" data-icon="back">返回</a>
+    </div>
+
+    <div data-role="content">
+        <form method="post" id="forgetPwd2Form"  action="demoform.asp">
+        	<input id="scode" value="" type="hidden">
+        	<input type="hidden" name="mobilePhone" id="mobilePhone" value="" />
+            <label for="showMobile" style="text-align: center;"><img src="./images/callback-3.png"></label>
+            <!-- <input type="hidden" name="mobilePhone" id="mobilePhone" value="" /> -->
+            <input type="text" name="showMobile" id="showMobile" value="" disabled="disabled" />
+            <div class="ui-grid-a">
+                <div class="ui-block-a" style="border: 0px solid black;">
+                    <input type="text" name="mobCode" id="mobCode" placeholder="短信验证码">
+                </div>
+                <div class="ui-block-b">
+                    <button id="smsCode" value="0" style="height: 35px;margin-left: 35px;font-size:12px">获取验证码</button>
+                </div>
+            </div>
+            <button  type="submit">下一步</button>
+        </form>
+    </div>
+
+    <div data-role="footer"   data-position="fixed" data-theme="b"  >
+        <h5>多维矩阵网络科技 @版权2015-2020</h5>
+    </div>
+</div>
+</body>
+</html>

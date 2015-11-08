@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <script src="file:///android_asset/js/config.js"></script>
+    <link rel="stylesheet" href="file:///android_asset/static/jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css">
+    <script src="file:///android_asset/static/jquery-1.8.3/jquery.min.js"></script>
+    <script src="file:///android_asset/js/common.js"></script>
+    <script src="file:///android_asset/static/jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <link rel="stylesheet" href="file:///android_asset/css/style.css">
+</head>
+<body>
+<div data-role="page" id="forgetPwd3">
+    <script src="static/jquery-validate-1.7/jquery.validate.min.js"></script>
+    <script src="static/jquery-1.8.3/jquery.cookie.js"></script>
+    <script src="js/forgetPwd.js"></script>
+    <div data-role="header" data-theme="b">
+        <h1>安全验证</h1>
+        <a href="#" data-ajax="false" onclick="$.mobile.changePage('forgetPwd1.html',{transition: 'flip'});" data-role="button" class="ui-btn-right" data-icon="back">返回</a>
+    </div>
+
+    <div data-role="content">
+        <form method="post"  id="forgetPwd3Form" action="demoform.asp">
+        	<input type="hidden" name="mobilePhone" id="mobilePhone" value="" />
+            <input type="password" name="password" id="password" placeholder="新密码">
+            <input type="password" name="comfrimNewPwd" id="comfrimNewPwd" placeholder="重复新密码">
+            <button  type="submit">确定更改密码</button>
+        </form>
+    </div>
+
+    <div data-role="footer"   data-position="fixed" data-theme="b" >
+        <h5>多维矩阵网络科技 @版权2015-2020</h5>
+    </div>
+</div>
+</body>
+</html>
