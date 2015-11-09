@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
 		    		mWebView.getSettings().setJavaScriptEnabled(true); 
 		    		mWebView.getSettings().setDefaultTextEncodingName("UTF-8") ;
 		    		mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);		    		
-//		    		mWebView.loadUrl("file:///android_asset/index.html");
-		    		mWebView.loadUrl("http://pa.doadway.com/index.html");
+		    		mWebView.loadUrl("file:///android_asset/index.html");
+//		    		mWebView.loadUrl("http://pa.doadway.com/index.html");
 		    		
 				try {
 					String fileNames[] =getAssets().list("");
