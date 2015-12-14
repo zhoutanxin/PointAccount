@@ -5,12 +5,13 @@ import java.io.IOException;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Menu;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
@@ -24,17 +25,37 @@ public class MainActivity extends Activity {
 			     case 1:
 			    	setContentView(R.layout.activity_main);
 			 		mWebView = (WebView) findViewById(R.id.mobileWebView); 
-//		    		mWebView.loadUrl("http://dianzhang.doadway.com:8080/GlodmineSever/index.html");
-
-//			 		mWebView.getSettings().setUseWideViewPort(true); 
-//			 		mWebView.getSettings().setLoadWithOverviewMode(true);
-			 		
-		    		mWebView.getSettings().setJavaScriptEnabled(true); 
-		    		mWebView.getSettings().setDefaultTextEncodingName("UTF-8") ;
-		    		mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);		    		
-		    		mWebView.loadUrl("file:///android_asset/index.html");
-//		    		mWebView.loadUrl("http://pa.doadway.com/index.html");
-		    		
+					mWebView = (WebView) findViewById(R.id.mobileWebView); 
+					WebSettings webSettings=mWebView.getSettings();
+//					mWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+					webSettings.setJavaScriptEnabled(true); 
+					webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+					webSettings.setDefaultTextEncodingName("UTF-8") ;
+					//自适应屏幕
+//					mWebView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+					
+//					int screenDensity = getResources().getDisplayMetrics().densityDpi ;   
+//					WebSettings.ZoomDensity zoomDensity = WebSettings.ZoomDensity.MEDIUM ;   
+//					switch (screenDensity){   
+//					case DisplayMetrics.DENSITY_LOW :  
+//					    zoomDensity = WebSettings.ZoomDensity.CLOSE;  
+//					    break;  
+//					case DisplayMetrics.DENSITY_MEDIUM:  
+//					    zoomDensity = WebSettings.ZoomDensity.MEDIUM;  
+//					    break;  
+//					case DisplayMetrics.DENSITY_HIGH:  
+//					    zoomDensity = WebSettings.ZoomDensity.FAR;  
+//					    break ;  
+//					}  
+//					webSettings.setDefaultZoom(zoomDensity); 
+					
+					mWebView.getSettings().setLoadWithOverviewMode(true);
+					mWebView.getSettings().setUseWideViewPort(true);   
+					//gl error from 0x502
+//					mWebView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);	
+					mWebView.setWebViewClient(new SelfWebViewClient());
+//					//调用客户端loadData方法 
+					mWebView.loadUrl("http://pa.doadway.com");				    		
 				try {
 					String fileNames[] =getAssets().list("");
 					for(String fileN:fileNames){
@@ -76,4 +97,19 @@ public class MainActivity extends Activity {
     	WelcomeView mView=new WelcomeView(this);
     	setContentView(mView);
     }
+    
+    private class SelfWebViewClient extends WebViewClient {
+
+		@Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			//重写shouldOverrideUrlLoading方法，使点击链接后不使用其他的浏览器打开。 
+		    	
+		    	view.loadUrl(url); 
+		        //如果不需要其他对点击链接事件的处理返回true，否则返回false 
+	        return super.shouldOverrideUrlLoading(view, url);
+        }
+		
+
+		 
+	}	    
 }
